@@ -1,4 +1,4 @@
-package com.company;
+package com.modulo1;
 
 public class TestHelloWorld {
 

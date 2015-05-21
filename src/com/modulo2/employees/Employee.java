@@ -1,4 +1,4 @@
-package com.modulo2;
+package com.modulo2.employees;
 
 /**
  * Created by pedrocontreras on 20/05/15.
@@ -6,17 +6,26 @@ package com.modulo2;
 
 public class Employee {
 
-    public int id;
-    public String firstName;
-    public String lastName;
-    public int age;
-    public String email;
-    public String phoneNumber;
-    public double salary;
-    public String job;
-    public String hireDate;
-    public String department;
+    private int id;
+    private String firstName;
+    private String lastName;
+    private int age;
+    private String email;
+    private String phoneNumber;
+    private double salary;
+    private String job;
+    private String hireDate;
+    private String department;
 
+    public Employee(String firstName, String lastName, String email, String phoneNumber, String hireDate, String job, String department) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.hireDate = hireDate;
+        this.job = job;
+        this.department = department;
+    }
 
     public int getId() {
         return id;
@@ -47,7 +56,12 @@ public class Employee {
     }
 
     public void setAge(int age) {
-        this.age = age;
+        if(age>=18 && age<=65){
+            this.age = age;
+        }
+        else{
+            System.out.println("Edad Incorrecta, debe ser un número entre 18 y 65");
+        }
     }
 
     public String getEmail() {
