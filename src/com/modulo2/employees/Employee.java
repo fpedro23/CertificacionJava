@@ -1,5 +1,7 @@
 package com.modulo2.employees;
 
+import java.util.Date;
+
 /**
  * Created by pedrocontreras on 20/05/15.
  */
@@ -13,18 +15,27 @@ public class Employee {
     private String email;
     private String phoneNumber;
     private double salary;
-    private String job;
-    private String hireDate;
-    private String department;
+    private Job job;
+    private Date hireDate;
+    private Department department;
 
-    public Employee(String firstName, String lastName, String email, String phoneNumber, String hireDate, String job, String department) {
+    public Employee(String firstName, String lastName, String email, String phoneNumber, Date hireDate, Job job, Department department) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.hireDate = hireDate;
         this.job = job;
-        this.department = department;
+        setDepartment(department);
+    }
+
+    public Employee(String firstName, String lastName, String email, String phoneNumber, Date hireDate, Job job) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.hireDate = hireDate;
+        this.job = job;
     }
 
     public int getId() {
@@ -84,31 +95,69 @@ public class Employee {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    protected void setSalary(double salary) {
         this.salary = salary;
     }
 
-    public String getJob() {
+    public Job getJob() {
         return job;
     }
 
-    public void setJob(String job) {
+    public void setJob(Job job) {
         this.job = job;
     }
 
-    public String getHireDate() {
+    public Date getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(String hireDate) {
+    public void setHireDate(Date hireDate) {
         this.hireDate = hireDate;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
+        Employee[] employeeList = department.getEmployees();
+        if (employeeList != null) {
+            Employee[] aux = new Employee[employeeList.length + 1];
+            System.arraycopy(employeeList, 0, aux, 0, employeeList.length);
+            aux[aux.length - 1] = this;
+            department.setEmployees(aux);
+        } else {
+            employeeList = new Employee[1];
+            employeeList[0] = this;
+            department.setEmployees(employeeList);
+        }
+    }
+
+
+    public String getDetails() {
+        return "Employee{" +
+                "Full name='" + this.firstName + " " +
+                "" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", salary=" + salary +
+                ", Department= " + this.getDepartment().getName() +
+                '}';
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", salary=" + salary +
+                ", job=" + job +
+                ", hireDate=" + hireDate +
+                ", department=" + department +
+                '}';
     }
 }

@@ -10,6 +10,14 @@ public class Location {
     private String stateProvince;
     private Country country;
 
+    public Location(String streetAddress, int postalCode, String city, String stateProvince, Country country) {
+        this.streetAddress = streetAddress;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.stateProvince = stateProvince;
+        this.country = country;
+    }
+
     public String getStreetAddress() {
         return streetAddress;
     }

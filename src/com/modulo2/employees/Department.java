@@ -7,6 +7,12 @@ public class Department {
     private String name;
     private Employee manager;
     private Location location;
+    private Employee[] employees;
+
+    public Department(String name, Location location) {
+        this.name = name;
+        this.location = location;
+    }
 
     public String getName() {
         return name;
@@ -30,5 +36,13 @@ public class Department {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public Employee[] getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Employee[] employees) {
+        this.employees = employees;
     }
 }

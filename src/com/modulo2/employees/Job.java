@@ -8,6 +8,12 @@ public class Job {
     private double maxSalary;
     private double minSalary;
 
+    public Job(String title, double maxSalary, double minSalary) {
+        this.title = title;
+        this.maxSalary = maxSalary;
+        this.minSalary = minSalary;
+    }
+
     public String getTitle() {
         return title;
     }
